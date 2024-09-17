@@ -1,8 +1,8 @@
-from fastapi import Api, Body
+from fastapi import APIRouter, Body
 from models.computer import Computer
-from app.database import ComputerModel
+from database import ComputerModel
 
-computer_route = Api()
+computer_route = APIRouter()
 
 @computer_route.post("/")
 def create_computer(computer: Computer = Body(...)):

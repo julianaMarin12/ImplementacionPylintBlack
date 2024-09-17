@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Body
+from fastapi import APIRouter, Body
 from models.table import Table
-from app.database import TableModel
+from database import TableModel
 
-table_route = FastAPI()
+table_route = APIRouter()
 
 @table_route.post("/")
 def create_table(table: Table = Body(...)):
