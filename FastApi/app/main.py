@@ -9,7 +9,6 @@ computer_route and table_route: Imported from routers.computer and routers.table
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from database import database as connection
-from starlette.responses import RedirectResponse
 from database import ComputerModel, TableModel
 from routers.computer import computer_route
 from routers.table import table_route
@@ -43,17 +42,6 @@ async def lifespan(app: FastAPI):
             connection.close()
 
 app = FastAPI(lifespan=lifespan) # Initialize FastAPI app with lifespan management
-
-@app.get("/", include_in_schema=False)
-def read_root():
-    """
-    Root endpoint that redirects to the API documentation.
-
-    Returns:
-        RedirectResponse: A response object that redirects the client to the "/docs" URL.
-    """
-    return RedirectResponse(url="/docs")
-
 
 app.include_router(computer_route, prefix="/api/computers", tags=["computers"])# Computer routes
 app.include_router(table_route, prefix="/api/tables", tags=["tables"])# Register table routes

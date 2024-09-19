@@ -22,12 +22,12 @@ def create_computer(computer: Computer = Body(...)):
     """
     # Create a new computer entry in the database
     ComputerModel.create(
-        manufacturer=computer.manufacturer, 
-        model=computer.model, 
-        processor=computer.processor, 
-        memory_size=computer.memory_size, 
-        storage_capacity=computer.storage_capacity, 
-        operating_system=computer.operating_system, 
+        manufacturer=computer.manufacturer,
+        model=computer.model,
+        processor=computer.processor,
+        memory_size=computer.memory_size,
+        storage_capacity=computer.storage_capacity,
+        operating_system=computer.operating_system,
         graphics_card=computer.graphics_card
     )
     return {"message": "Computer created successfully"}
@@ -41,13 +41,13 @@ def get_computer():
     Returns:
         list: A list of dictionaries, each representing a computer's details.
     """
-    # Query the database for all computers with id_computer greater than 0 and return as a list of dictionaries
+    #For all computers with id_computer greater than 0 and return as a list of dictionaries
     computer = ComputerModel.select().where(ComputerModel.id_computer > 0).dicts()
     return list(computer)
 
 # GET endpoint to retrieve a specific computer by its ID
 @computer_route.get("/{computer_id}")
-def get_computer(computer_id: int):
+def get_computer_by_id(computer_id: int):
     """
     Retrieve a specific computer by its ID.
 
@@ -61,8 +61,6 @@ def get_computer(computer_id: int):
         # Fetch the computer with the given ID
         computer = ComputerModel.get(ComputerModel.id_computer == computer_id)
         return computer
-    except ComputerModel.DoesNotExist:
+    except ComputerModel.DoesnotExist:
         # Return an error message if the computer with the given ID does not exist
         return {"error": "Computer not found"}
-
-    

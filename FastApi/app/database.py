@@ -38,11 +38,11 @@ class TableModel(Model):
     id_table = AutoField(primary_key=True)  # Auto-incrementing primary key
     brand = CharField(max_length=50)  # Brand of the table (max 50 characters)
     model = CharField(max_length=50)  # Model name of the table (max 50 characters)
-    price = DecimalField(max_digits=10, decimal_places=1)  # Price with up to 10 digits and 1 decimal place
+    price = DecimalField(max_digits=10, decimal_places=1)  # Price up to 10 digits and 1 decimal
     support = IntegerField()  # Integer field to represent how many items the table can support
     color = CharField(max_length=50)  # Color of the table (max 50 characters)
 
     # Meta class defines additional information about the model
     class Meta:
-        database = database  # Specify the database connection to use for this model
+        database = database # Specify the database connection to use for this model
         table_name = "tables"  # Define the name of the table in the database

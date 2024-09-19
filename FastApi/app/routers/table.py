@@ -20,10 +20,10 @@ def create_table(table: Table = Body(...)):
     """
     # Create a new table entry in the database
     TableModel.create(
-        brand=table.brand, 
-        model=table.model, 
-        price=table.price, 
-        support=table.support, 
+        brand=table.brand,
+        model=table.model,
+        price=table.price,
+        support=table.support,
         color=table.color
     )
     return {"message": "Table created successfully"}
@@ -37,13 +37,13 @@ def get_table():
     Returns:
         list: A list of dictionaries, each representing a table's details.
     """
-    # Query the database for all tables with id_table greater than 0 and return as a list of dictionaries
+    #For all tables with id_table greater than 0 and return as a list of dictionaries
     table = TableModel.select().where(TableModel.id_table > 0).dicts()
     return list(table)
 
 # GET endpoint to retrieve a specific table by its ID
 @table_route.get("/{table_id}")
-def get_table(table_id: int):
+def get_table_by_id(table_id: int):
     """
     Retrieve a specific table by its ID.
 
@@ -60,5 +60,4 @@ def get_table(table_id: int):
     except TableModel.DoesNotExist:
         # Return an error message if the table with the given ID does not exist
         return {"error": "Table not found"}
-
     
