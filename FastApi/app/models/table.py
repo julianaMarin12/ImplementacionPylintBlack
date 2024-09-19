@@ -24,12 +24,24 @@ class Table(BaseModel):
     price: float
     support: int
     color: str
-    
+
+    """Support validation
+    Validator:
+        @validator('suport'):This is a custom validation method for the suport field.
+        Validation logic: The method ensures the support value.
+    """
+
     @validator('support')
-    def support_must_be_positive_and_max_four(cls, v):
+    def support_must_be_positive_and_max_four(self, v):
+        """
+        Verify that the support is positive and not greater than 4.
+        Args:
+            v (int): The value of the support to validate.
+        Returns:
+            int: The value validated if correct.
+        Raises:
+            ValueError: If the support is less than or equal to 0 or greater than 4.
+        """
         if v <= 0 or v > 4:
             raise ValueError('support must be a positive integer and cannot exceed 4.')
         return v
-
-    class Config:
-        anystr_strip_whitespace = True

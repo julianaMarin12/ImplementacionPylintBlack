@@ -21,3 +21,4 @@ def get_table(table_id: int):
         return table
     except TableModel.DoesNotExist:
         return {"error": "Table not found"}
+    

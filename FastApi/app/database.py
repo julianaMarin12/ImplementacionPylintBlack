@@ -23,8 +23,8 @@ class ComputerModel(Model):
     graphics_card = CharField(max_length=50)
 
     class Meta:
-        database = database  
-        table_name = "computers"  
+        database = database
+        table_name = "computers" 
 
 class TableModel(Model):
 
@@ -36,5 +36,5 @@ class TableModel(Model):
     color = CharField(max_length=50)
 
     class Meta:
-        database = database  
-        table_name = "tables"  
+        database = database
+        table_name = "tables"

@@ -36,7 +36,7 @@ class Computer(BaseModel):
     """
 
     @validator('memory_size')
-    def display_size_must_be_positive_and_max_four(cls,v):
+    def display_size_must_be_positive_and_max_four(self,v):
         """
         Verify that the memory size is positive and not greater than 129.
         Args:
@@ -48,7 +48,4 @@ class Computer(BaseModel):
         """
         if v <= 0 or v > 129:
             raise ValueError('display_size must be a positive float and cannot exceed 129')
-        return v       
-    
-    class Config:
-        anystr_strip_whitespace = True
+        return v

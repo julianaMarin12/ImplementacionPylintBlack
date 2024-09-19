@@ -21,3 +21,4 @@ def get_computer(computer_id: int):
         return computer
     except ComputerModel.DoesNotExist:
         return {"error": "Computer not found"}
+    
