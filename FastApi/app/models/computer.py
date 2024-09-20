@@ -36,7 +36,7 @@ class Computer(BaseModel):
     """
 
     @validator('memory_size')
-    def display_size_must_be_positive_and_max_four(self,v):
+    def display_size_must_be_positive_and_max_four(cls,v):
         """
         Verify that the memory size is positive and not greater than 129.
         Args:
