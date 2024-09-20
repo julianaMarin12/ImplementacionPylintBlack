@@ -32,7 +32,7 @@ class Table(BaseModel):
     """
 
     @validator('support')
-    def support_must_be_positive_and_max_four(cls, v):
+    def support_must_be_positive_and_max_four(self, v):
         """
         Verify that the support is positive and not greater than 4.
         Args:
