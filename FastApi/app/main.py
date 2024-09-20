@@ -6,8 +6,9 @@ ComputerModel, TableModel: Database models that define the structure of the tabl
 computer_route and table_route: Imported from routers.computer and routers.table. 
 """
 
-from fastapi import FastAPI
 from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
 from database import database as connection
 from database import ComputerModel, TableModel
 from routers.computer import computer_route

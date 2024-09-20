@@ -1,5 +1,16 @@
+"""
+This module handles the database configuration and the creation of database models using Peewee ORM.
+It also loads environment variables for sensitive configurations like database credentials.
+
+Imports:
+    - load_dotenv (from dotenv): Loads environment variables from a .env file.
+    - From peewee: Peewee ORM classes and fields used to define the database models.
+    - os: Provides functions to interact with the operating system.
+"""
+
+
 from dotenv import load_dotenv
-from peewee import *
+from peewee import Model, MySQLDatabase, AutoField, CharField, IntegerField, DecimalField
 import os
 
 # Load environment variables from a .env file to manage sensitive data like database credentials
