@@ -8,7 +8,8 @@ computer_route and table_route: Imported from routers.computer and routers.table
 
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from helpers.api_key_auth import get_api_key
 from database import database as connection
 from database import ComputerModel, TableModel
 from routers.computer import computer_route
@@ -44,5 +45,5 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan) # Initialize FastAPI app with lifespan management
 
-app.include_router(computer_route, prefix="/api/computers", tags=["computers"])# Computer routes
-app.include_router(table_route, prefix="/api/tables", tags=["tables"])# Register table routes
+app.include_router(computer_route, prefix="/api/computers", tags=["computers"], dependencies=[Depends(get_api_key)])# Computer routes
+app.include_router(table_route, prefix="/api/tables", tags=["tables"],  dependencies=[Depends(get_api_key)])# Register table routes
