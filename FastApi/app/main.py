@@ -45,5 +45,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan) # Initialize FastAPI app with lifespan management
 
-app.include_router(computer_route, prefix="/api/computers", tags=["computers"], dependencies=[Depends(get_api_key)])# Computer routes
-app.include_router(table_route, prefix="/api/tables", tags=["tables"],  dependencies=[Depends(get_api_key)])# Register table routes
+app.include_router(
+    computer_route, 
+    prefix="/api/computers", 
+    tags=["computers"], 
+    dependencies=[Depends(get_api_key)],
+)# Computer routes
+
+app.include_router(
+    table_route,
+    prefix="/api/tables",
+    tags=["tables"],
+    dependencies=[Depends(get_api_key)],
+)# Register table routes
